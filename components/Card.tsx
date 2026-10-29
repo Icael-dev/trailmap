@@ -1,5 +1,6 @@
-import { Image, View, Text } from 'react-native';
+import { Image, View, Text, Pressable } from 'react-native';
 import { styles } from '../styles';
+import { useState } from 'react';
 // import photo1 from '../assets/images/photo1.png';
 
 interface CardProps {
@@ -10,6 +11,7 @@ interface CardProps {
 }
 
 export const Card = ({ nom, difficulte, distancekm, photo }: CardProps) => {
+     const [favoris, setFavoris] = useState(false);
   return (
     <View style={styles.cardContainer}>
           <View>
@@ -26,6 +28,9 @@ export const Card = ({ nom, difficulte, distancekm, photo }: CardProps) => {
                     <Text>{difficulte}</Text>
                     <Text>{distancekm} km</Text>
                </View>
+               <Pressable onPress={() => setFavoris(!favoris)}>
+                    <Text>{favoris ? '❤️' : '🤍' }</Text>
+               </Pressable>
           </View>
     </View>
   )
